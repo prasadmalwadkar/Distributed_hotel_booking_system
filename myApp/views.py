@@ -8,3 +8,6 @@ def all_user(request):
 
 def home(request) :  # request is an object that contains information
     return render(request, 'home.html')
+
+def guestlogin(request):
+    return render(request,'guestlogin.html')
