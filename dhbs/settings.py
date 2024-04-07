@@ -55,7 +55,7 @@ ROOT_URLCONF = 'dhbs.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates\myApp'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
