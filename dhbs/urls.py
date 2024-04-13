@@ -24,5 +24,5 @@ urlpatterns = [
     path('myApp/',include('myApp.urls'),name="myApp"),
     path('', views.home,name='home'),
     path('guestlogin/', views.guestlogin,name='guestlogin'),
-    path('signup/', views.signup, name='signup')
+    path('guestsignup/', views.guestsignup, name='guestsignup')
 ]
