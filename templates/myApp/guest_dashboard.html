@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guest Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to Guest Dashboard</h1>
+    <button onclick="window.location.href='{% url 'book_room' %}'">Book a Room</button>
+    <button onclick="window.location.href='{% url 'my_bookings' %}'">My Bookings</button>
+
+    <h2>Current Bookings:</h2>
+    <ul>
+        {% for booking in current_bookings %}
+            <li>{{ booking.checkin_date }} - {{ booking.checkout_date }}</li>
+        {% empty %}
+            <li>No current bookings</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Past Bookings:</h2>
+    <ul>
+        {% for booking in past_bookings %}
+            <li>{{ booking.checkin_date }} - {{ booking.checkout_date }}</li>
+        {% empty %}
+            <li>No past bookings</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

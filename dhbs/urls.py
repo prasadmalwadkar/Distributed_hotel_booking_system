@@ -23,6 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('myApp/',include('myApp.urls'),name="myApp"),
     path('', views.home,name='home'),
-    path('guestlogin/', views.guestlogin,name='guestlogin'),
-    path('guestsignup/', views.guestsignup, name='guestsignup')
+    #   path('guestlogin/', views.guestlogin,name='guestlogin'),
+    path('guestsignup/', views.guestsignup_view, name='guestsignup'),
+    path('guestlogin',LoginView.as_view(template_name='guestlogin.html')),
+    path('guest-dashboard', views.guest_dashboard_view,name='guest-dashboard'),
+
 ]

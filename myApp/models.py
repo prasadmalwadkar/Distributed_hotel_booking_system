@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractBaseUser, BaseUserManager 
-import hashlib
+from datetime import datetime
 
 
 class Guest(models.Model):
@@ -30,3 +30,20 @@ class Guest(models.Model):
             self.partition_key = 'even_partition'
         
         super(Guest, self).save(*args, **kwargs)
+
+
+class Booking(models.Model):
+    booking_id = models.AutoField(primary_key=True)
+    guest_id = models.IntegerField()
+    room_id = models.IntegerField()
+    room_type = models.CharField(max_length=50)
+    checkin_date = models.DateField()
+    checkout_date = models.DateField()
+    booking_status = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    @classmethod
+    def get_partition(cls, room_type, checkin_date):
+        room_partition = 'deluxe' if room_type.lower() == 'deluxe' else 'standard'
+        month_partition = checkin_date.month
+        return f"p_{room_partition}_{month_partition:02d}"
